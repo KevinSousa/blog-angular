@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { fakeData } from '../../data/fakeData';
 
 @Component({
   selector: 'app-content',
@@ -16,13 +17,23 @@ export class ContentComponent implements OnInit {
   @Input()
   contentDescription: string = 'Olá Mundo';
 
+  private id: string | null = '';
+
   constructor(
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(value => {
-      console.log(value.get("id"));
+      this.id = value.get("id");
     })
+    this.setComponentValues(this.id);
+  }
+
+  setComponentValues(id: string | null): void {
+    const result = fakeData.filter(article => article.id == id)[0]
+    this.photoCover = result.photo
+    this.contentTitle = result.title
+    this.contentDescription = result.description
   }
 }

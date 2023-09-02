@@ -1,0 +1,20 @@
+.big__card__container {
+    border: solid white 2px;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.container__title > h1 {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.container__description > p {
+    color: grey;
+}
